@@ -1,17 +1,26 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.dashboard')
+@section('content')
+    <main class="app-main" id="main" tabindex="-1">
+        <div class="app-content-header">
+            <div class="container-fluid">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="mb-0 fs-3">Dashboard</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb float-sm-end">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+        <div class="app-content">
+
+        </div>
+    </main>
+@endsection
