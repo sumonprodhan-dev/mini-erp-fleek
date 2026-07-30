@@ -49,7 +49,7 @@ Ensure your local environment has the following installed:
 
 ### Step 1: Clone the Repository
 Open your terminal (Git Bash, Command Prompt, or VS Code Terminal) and run:
-git clone https://github.com/your-username/mini-erp-fleek.git
+git clone https://github.com/sumonprodhan-dev/mini-erp-fleek-bd
 cd mini-erp-fleek
 
 ### Step 2: Install PHP Dependencies
