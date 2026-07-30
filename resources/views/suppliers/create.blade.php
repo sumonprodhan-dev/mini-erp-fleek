@@ -16,12 +16,10 @@
                 class="text-danger">*</span></label>
         <div class="input-group">
             <span class="input-group-text bg-light border-end-0 text-muted"><i class="bi bi-telephone"></i></span>
-            <input type="text" class="form-control border-start-0 @error('phone') is-invalid @enderror" id="phone"
-                name="phone" value="{{ old('phone') }}" placeholder="Enter phone number" required>
+            <input type="text" class="form-control border-start-0 @error('phone') is-invalid @enderror"
+                id="phone" name="phone" value="{{ old('phone') }}" placeholder="Enter phone number" required>
         </div>
     </div>
-
-
 
     <div class="d-flex justify-content-end gap-2 border-top pt-3">
         <a href="{{ route('suppliers.index') }}" class="btn btn-light px-4 rounded-3 fw-semibold">Cancel</a>

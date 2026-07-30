@@ -12,7 +12,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->get();
-        return view('products.index', compact('products'));
+        $trashCount = Product::onlyTrashed()->count();
+        return view('products.index', compact('products', 'trashCount'));
     }
 
     public function create()
@@ -47,5 +48,27 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')
             ->with('success', 'Product deleted successfully.');
+    }
+
+    public function trash()
+    {
+        $products = Product::onlyTrashed()->get();
+        return view('products.trash', compact('products'));
+    }
+
+    public function restore($id)
+    {
+        $Products = Product::onlyTrashed()->findOrFail($id);
+        $Products->restore();
+
+        return redirect()->route('products.trash')->with('success', 'Product restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        $Products = Product::onlyTrashed()->findOrFail($id);
+        $Products->forceDelete();
+
+        return redirect()->route('products.trash')->with('success', 'Product permanently deleted.');
     }
 }

@@ -22,8 +22,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
+    Route::get('/products/trash', [ProductController::class, 'trash'])->name('products.trash');
+    Route::put('/products/{id}/restore', [ProductController::class, 'restore'])->name('products.restore');
+    Route::delete('/products/{id}/force-delete', [ProductController::class, 'forceDelete'])->name('products.forceDelete');
     Route::resource('products', ProductController::class);
+
+    Route::get('/suppliers/trash', [SupplierController::class, 'trash'])->name('suppliers.trash');
+    Route::put('/suppliers/{id}/restore', [SupplierController::class, 'restore'])->name('suppliers.restore');
+    Route::delete('/suppliers/{id}/force-delete', [SupplierController::class, 'forceDelete'])->name('suppliers.forceDelete');
     Route::resource('suppliers', SupplierController::class);
+
     Route::resource('employees', EmployeeController::class);
     Route::resource('departments', DepartmentController::class);
 

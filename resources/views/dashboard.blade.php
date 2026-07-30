@@ -20,7 +20,11 @@
             </div>
         </div>
         <div class="app-content">
+            
 
         </div>
     </main>
 @endsection
+
+@push('scripts')
+@endpush

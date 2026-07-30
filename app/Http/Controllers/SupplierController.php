@@ -12,7 +12,8 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = Supplier::latest()->get();
-        return view('suppliers.index', compact('suppliers'));
+        $trashCount = Supplier::onlyTrashed()->count();
+        return view('suppliers.index', compact('suppliers', 'trashCount'));
     }
 
     public function create()
@@ -47,5 +48,27 @@ class SupplierController extends Controller
 
         return redirect()->route('suppliers.index')
             ->with('success', 'Supplier deleted successfully.');
+    }
+
+    public function trash()
+    {
+        $suppliers = Supplier::onlyTrashed()->get();
+        return view('suppliers.trash', compact('suppliers'));
+    }
+
+    public function restore($id)
+    {
+        $supplier = Supplier::onlyTrashed()->findOrFail($id);
+        $supplier->restore();
+
+        return redirect()->route('suppliers.trash')->with('success', 'Supplier restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        $supplier = Supplier::onlyTrashed()->findOrFail($id);
+        $supplier->forceDelete();
+
+        return redirect()->route('suppliers.trash')->with('success', 'Supplier permanently deleted.');
     }
 }
